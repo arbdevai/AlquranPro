@@ -27,7 +27,16 @@ jobs:
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-35" "build-tools;34.0.0"
       - name: Build debug APK
-        run: gradle :app:assembleDebug --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          gradle :app:assembleDebug --no-daemon --stacktrace --console=plain 2>&1 | tee build.log
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AlquranPro-build-log
+          path: build.log
+          if-no-files-found: warn
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
