@@ -12,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -60,6 +61,7 @@ private val surahs = listOf(
     Surah(114, "An-Nas", "الناس", listOf("قُلْ أَعُوذُ بِرَبِّ النَّاسِ", "مَلِكِ النَّاسِ", "إِلَٰهِ النَّاسِ", "مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ"))
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable private fun HomeScreen(onSurahClick: (Surah) -> Unit) {
     var query by remember { mutableStateOf("") }
     val filtered = surahs.filter { it.name.contains(query, true) || it.number.toString() == query }
@@ -84,6 +86,7 @@ private val surahs = listOf(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable private fun ReaderScreen(surah: Surah, onBack: () -> Unit) {
     Scaffold(topBar = { TopAppBar(title = { Text(surah.name) }, navigationIcon = { IconButton(onClick = onBack) { Text("‹", fontSize = 32.sp) } }) }) { padding ->
         LazyColumn(modifier = Modifier.padding(padding).padding(16.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
