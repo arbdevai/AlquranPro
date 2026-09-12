@@ -48,28 +48,33 @@ fun TasbihScreen(onBack: () -> Unit) {
         label = "tasbih_scale"
     )
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Tasbih Digital", fontWeight = FontWeight.SemiBold) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
-                    }
-                }
-            )
-        }
-    ) { padding ->
+    Scaffold { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
-                .padding(20.dp),
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            IOSCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onBack) {
+                    Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
+                }
+                Spacer(modifier = Modifier.width(4.dp))
+                Text("Tasbih Digital", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            }
+
+            IOSCard(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+                borderColor = MaterialTheme.colorScheme.tertiaryContainer
+            ) {
                 Column(
                     modifier = Modifier.fillMaxWidth().padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -77,13 +82,14 @@ fun TasbihScreen(onBack: () -> Unit) {
                     Text(
                         text = "Pilih Lafadz Zikir",
                         fontSize = 12.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onTertiaryContainer
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = zikirOptions[selectedZikirIndex],
                         fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onTertiaryContainer
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     androidx.compose.foundation.layout.FlowRow(
@@ -147,12 +153,15 @@ fun TasbihScreen(onBack: () -> Unit) {
                 }
             }
 
-            Row(
+            androidx.compose.foundation.layout.FlowRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                androidx.compose.foundation.layout.FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     listOf(33, 99, 0).forEach { target ->
                         FilledTonalButton(onClick = { selectedTarget = target }) {
                             Text(if (target == 0) "∞" else target.toString(), fontWeight = FontWeight.Bold)

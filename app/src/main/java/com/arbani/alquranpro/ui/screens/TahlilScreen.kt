@@ -18,41 +18,55 @@ import com.arbani.alquranpro.data.OfflineRepository
 import com.arbani.alquranpro.ui.components.IOSCard
 import com.arbani.alquranpro.ui.components.IOSPill
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TahlilScreen(onBack: () -> Unit) {
     val tahlilItems = OfflineRepository.tahlilData
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Tahlil & Doa Arwah", fontWeight = FontWeight.SemiBold) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
-                    }
-                }
-            )
-        }
-    ) { padding ->
+    Scaffold { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
             contentPadding = PaddingValues(vertical = 12.dp)
         ) {
             item {
-                IOSCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = onBack) {
+                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
+                    }
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Column {
+                        Text("Tahlil & Doa Arwah", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                        Text(
+                            "Susunan bacaan tahlil lengkap",
+                            fontSize = 12.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+
+            item {
+                IOSCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+                    borderColor = MaterialTheme.colorScheme.tertiaryContainer
+                ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
                             text = "Bacaan Tahlil (Offline)",
                             fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp
+                            fontSize = 16.sp,
+                            color = MaterialTheme.colorScheme.onTertiaryContainer
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = "Dilengkapi teks Arab, transliterasi Latin, dan terjemahan bahasa Indonesia.",
                             fontSize = 13.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = MaterialTheme.colorScheme.onTertiaryContainer
                         )
                     }
                 }
@@ -61,12 +75,15 @@ fun TahlilScreen(onBack: () -> Unit) {
             items(tahlilItems, key = { it.id }) { item ->
                 IOSCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp)) {
                     Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
-                        Row(
+                        Column(
                             modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            IOSPill(text = "Urutan ${item.id}")
+                            IOSPill(
+                                text = "Urutan ${item.id}",
+                                backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
                             Text(
                                 text = item.judul,
                                 fontSize = 14.sp,

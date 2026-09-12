@@ -28,7 +28,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReaderScreen(
     surahNumber: Int,
@@ -123,43 +122,56 @@ fun ReaderScreen(
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Column {
-                        Text(detail?.surah?.namaLatin ?: "Surah $surahNumber", fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                        Text(
-                            detail?.let { "Surah ke-${it.surah.nomor} • ${it.surah.jumlahAyat} ayat" } ?: "Memuat...",
-                            fontSize = 11.sp,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
-                    }
-                }
-            )
-        }
-    ) { padding ->
+    Scaffold { padding ->
         when {
             loadError != null -> {
-                Box(modifier = Modifier.fillMaxSize().padding(padding).padding(20.dp), contentAlignment = Alignment.Center) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Terjadi kesalahan:", fontWeight = FontWeight.Bold)
-                        Text(loadError!!, color = MaterialTheme.colorScheme.error)
-                        Spacer(modifier = Modifier.height(12.dp))
-                        Button(onClick = onBack) {
-                            Text("Kembali")
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        IconButton(onClick = onBack) {
+                            Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
                         }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Kembali", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
                     }
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text("Terjadi kesalahan:", fontWeight = FontWeight.Bold)
+                    Text(loadError!!, color = MaterialTheme.colorScheme.error)
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Button(onClick = onBack) {
+                        Text("Kembali")
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
                 }
             }
             detail == null -> {
-                Box(modifier = Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .padding(16.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        IconButton(onClick = onBack) {
+                            Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
+                        }
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Memuat surah $surahNumber...", fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+                    }
+                    Box(modifier = Modifier.fillMaxSize().weight(1f), contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator()
+                    }
                 }
             }
             else -> {
@@ -172,7 +184,32 @@ fun ReaderScreen(
                     contentPadding = PaddingValues(vertical = 12.dp)
                 ) {
                     item {
-                        IOSCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(20.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            IconButton(onClick = onBack) {
+                                Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
+                            }
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Column {
+                                Text(surah.namaLatin, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                                Text(
+                                    "Surah ke-${surah.nomor} • ${surah.jumlahAyat} ayat",
+                                    fontSize = 12.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+
+                    item {
+                        IOSCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(20.dp),
+                            backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+                            borderColor = MaterialTheme.colorScheme.primaryContainer
+                        ) {
                             Column(
                                 modifier = Modifier.fillMaxWidth().padding(20.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
@@ -181,14 +218,20 @@ fun ReaderScreen(
                                     text = surah.nama,
                                     fontSize = 36.sp,
                                     fontWeight = FontWeight.Bold,
-                                    textAlign = TextAlign.Center
+                                    textAlign = TextAlign.Center,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                                 Spacer(modifier = Modifier.height(6.dp))
-                                Text(text = surah.namaLatin, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = surah.namaLatin,
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
                                 Text(
                                     text = "(${surah.arti}) • Diturunkan di ${surah.tempatTurun}",
                                     fontSize = 12.sp,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                             }
                         }
@@ -201,13 +244,20 @@ fun ReaderScreen(
 
                         IOSCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp)) {
                             Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
-                                Row(
+                                Column(
                                     modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
+                                    verticalArrangement = Arrangement.spacedBy(8.dp)
                                 ) {
-                                    IOSPill(text = "Ayat ${verse.nomorAyat}")
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                    IOSPill(
+                                        text = "Ayat ${verse.nomorAyat}",
+                                        backgroundColor = MaterialTheme.colorScheme.secondaryContainer,
+                                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                                    )
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.End,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
                                         if (audioUrl != null) {
                                             IconButton(onClick = { playAudio(verse.nomorAyat, audioUrl) }) {
                                                 Icon(

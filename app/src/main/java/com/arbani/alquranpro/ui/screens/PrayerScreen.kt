@@ -15,64 +15,82 @@ import androidx.compose.ui.unit.sp
 import com.arbani.alquranpro.R
 import com.arbani.alquranpro.data.OfflineRepository
 import com.arbani.alquranpro.ui.components.IOSCard
-import com.arbani.alquranpro.ui.components.IOSHeroCard
 import com.arbani.alquranpro.ui.components.IOSPill
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PrayerScreen(onBack: () -> Unit) {
     val schedule = remember { OfflineRepository.getTodayPrayerSchedule() }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Jadwal Sholat", fontWeight = FontWeight.SemiBold) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
-                    }
-                }
-            )
-        }
-    ) { padding ->
+    Scaffold { padding ->
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
             contentPadding = PaddingValues(vertical = 12.dp)
         ) {
             item {
-                IOSHeroCard {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        IOSPill(text = "Jakarta (WIB)")
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = onBack) {
+                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
+                    }
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Column {
+                        Text("Jadwal Sholat", fontWeight = FontWeight.Bold, fontSize = 20.sp)
                         Text(
-                            text = "Jadwal statis offline",
-                            fontSize = 11.sp,
+                            "Jadwal harian waktu sholat",
+                            fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
+                }
+            }
 
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = "Sholat Berikutnya: ${schedule.nextPrayerName}",
-                        fontSize = 13.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Text(
-                        text = schedule.nextPrayerTime,
-                        fontSize = 42.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Hitung mundur: -${schedule.countdownFormatted}",
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium
-                    )
+            item {
+                IOSCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    backgroundColor = MaterialTheme.colorScheme.primaryContainer,
+                    borderColor = MaterialTheme.colorScheme.primaryContainer
+                ) {
+                    Column(modifier = Modifier.padding(20.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            IOSPill(
+                                text = "Jakarta (WIB)",
+                                backgroundColor = MaterialTheme.colorScheme.primary,
+                                contentColor = MaterialTheme.colorScheme.onPrimary
+                            )
+                            Text(
+                                text = "Jadwal statis offline",
+                                fontSize = 11.sp,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = "Sholat Berikutnya: ${schedule.nextPrayerName}",
+                            fontSize = 13.sp,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Text(
+                            text = schedule.nextPrayerTime,
+                            fontSize = 42.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "Hitung mundur: -${schedule.countdownFormatted}",
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                    }
                 }
             }
 
