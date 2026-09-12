@@ -169,7 +169,7 @@ fun HomeScreen(
                             modifier = Modifier.weight(1f),
                             onClick = {
                                 when (menu) {
-                                    HomeScreenMenu.QURAN -> {}
+                                    HomeScreenMenu.QURAN -> onSurahClick(1)
                                     HomeScreenMenu.SHOLAT -> onPrayerClick()
                                     HomeScreenMenu.TASBIH -> onTasbihClick()
                                     HomeScreenMenu.TAHLIL -> onTahlilClick()
