@@ -2,8 +2,11 @@ package com.arbani.alquranpro
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import com.arbani.alquranpro.data.QuranRepository
 import com.arbani.alquranpro.ui.screens.*
 import com.arbani.alquranpro.ui.theme.AlquranProTheme
 
@@ -16,56 +19,54 @@ sealed interface Screen {
 }
 
 class MainActivity : ComponentActivity() {
+    private val repository by lazy { QuranRepository(applicationContext) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AlquranProApp()
+            AlquranProApp(repository)
         }
     }
 }
 
 @Composable
-fun AlquranProApp() {
+fun AlquranProApp(repository: QuranRepository? = null) {
     AlquranProTheme {
-        var currentScreen by remember { mutableStateOf<Screen>(Screen.Home) }
+        var currentScreenName by rememberSaveable { mutableStateOf("home") }
+        var currentSurahNumber by rememberSaveable { mutableIntStateOf(1) }
 
-        when (val screen = currentScreen) {
-            is Screen.Home -> {
+        BackHandler(enabled = currentScreenName != "home") {
+            currentScreenName = "home"
+        }
+
+        when (currentScreenName) {
+            "home" -> {
                 HomeScreen(
                     onSurahClick = { surahNum ->
-                        currentScreen = Screen.Reader(surahNum)
+                        currentSurahNumber = surahNum
+                        currentScreenName = "reader"
                     },
-                    onTasbihClick = {
-                        currentScreen = Screen.Tasbih
-                    },
-                    onTahlilClick = {
-                        currentScreen = Screen.Tahlil
-                    },
-                    onPrayerClick = {
-                        currentScreen = Screen.Prayer
-                    }
+                    onTasbihClick = { currentScreenName = "tasbih" },
+                    onTahlilClick = { currentScreenName = "tahlil" },
+                    onPrayerClick = { currentScreenName = "prayer" },
+                    repository = repository
                 )
             }
-            is Screen.Reader -> {
+            "reader" -> {
                 ReaderScreen(
-                    surahNumber = screen.surahNumber,
-                    onBack = { currentScreen = Screen.Home }
+                    surahNumber = currentSurahNumber,
+                    onBack = { currentScreenName = "home" },
+                    repository = repository
                 )
             }
-            is Screen.Tasbih -> {
-                TasbihScreen(
-                    onBack = { currentScreen = Screen.Home }
-                )
+            "tasbih" -> {
+                TasbihScreen(onBack = { currentScreenName = "home" })
             }
-            is Screen.Tahlil -> {
-                TahlilScreen(
-                    onBack = { currentScreen = Screen.Home }
-                )
+            "tahlil" -> {
+                TahlilScreen(onBack = { currentScreenName = "home" })
             }
-            is Screen.Prayer -> {
-                PrayerScreen(
-                    onBack = { currentScreen = Screen.Home }
-                )
+            "prayer" -> {
+                PrayerScreen(onBack = { currentScreenName = "home" })
             }
         }
     }

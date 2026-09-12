@@ -26,6 +26,9 @@ jobs:
       - uses: android-actions/setup-android@v3
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-35" "build-tools;34.0.0"
+      - name: Validate EQuran asset bundle
+        run: |
+          python3 scripts/validate_equran_bundle.py
       - name: Build debug APK
         run: |
           set -o pipefail

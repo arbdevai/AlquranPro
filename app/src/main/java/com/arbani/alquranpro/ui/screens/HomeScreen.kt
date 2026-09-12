@@ -1,39 +1,53 @@
 package com.arbani.alquranpro.ui.screens
 
-import android.view.HapticFeedbackConstants
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.arbani.alquranpro.data.OfflineRepository
+import com.arbani.alquranpro.R
+import com.arbani.alquranpro.data.QuranRepository
 import com.arbani.alquranpro.data.Surah
+import com.arbani.alquranpro.data.SurahDetail
+import com.arbani.alquranpro.data.TafsirItem
 import com.arbani.alquranpro.ui.components.IOSCard
 import com.arbani.alquranpro.ui.components.IOSHeroCard
 import com.arbani.alquranpro.ui.components.IOSPill
-import com.arbani.alquranpro.ui.theme.EmeraldPrimary
-import com.arbani.alquranpro.ui.theme.IOSGradients
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-enum class HomeScreenMenu(val icon: String, val label: String) {
-    QURAN("📖", "Al-Qur'an"),
-    SHOLAT("🕌", "Jadwal Sholat"),
-    TASBIH("📿", "Tasbih Digital"),
-    TAHLIL("🤲", "Tahlil & Doa")
+enum class HomeScreenMenu(val iconRes: Int, val label: String) {
+    QURAN(R.drawable.ic_menu_book, "Al-Qur'an"),
+    SHOLAT(R.drawable.ic_schedule, "Jadwal Sholat"),
+    TASBIH(R.drawable.ic_touch_app, "Tasbih Digital"),
+    TAHLIL(R.drawable.ic_auto_stories, "Tahlil & Doa")
+}
+
+private const val LAST_READ_PREFS = "reading_progress"
+private const val LAST_READ_SURAH = "surah"
+private const val LAST_READ_AYAH = "ayah"
+
+fun saveLastRead(context: Context, surahNumber: Int, ayahNumber: Int) {
+    val prefs: SharedPreferences = context.getSharedPreferences(LAST_READ_PREFS, Context.MODE_PRIVATE)
+    prefs.edit().putInt(LAST_READ_SURAH, surahNumber).putInt(LAST_READ_AYAH, ayahNumber).apply()
+}
+
+fun loadLastRead(context: Context): Pair<Int, Int>? {
+    val prefs: SharedPreferences = context.getSharedPreferences(LAST_READ_PREFS, Context.MODE_PRIVATE)
+    if (!prefs.contains(LAST_READ_SURAH)) return null
+    return prefs.getInt(LAST_READ_SURAH, 1) to prefs.getInt(LAST_READ_AYAH, 1)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,17 +56,44 @@ fun HomeScreen(
     onSurahClick: (Int) -> Unit,
     onTasbihClick: () -> Unit,
     onTahlilClick: () -> Unit,
-    onPrayerClick: () -> Unit
+    onPrayerClick: () -> Unit,
+    repository: QuranRepository? = null
 ) {
+    val context = LocalContext.current
+    val repo = remember(repository) { repository ?: QuranRepository(context) }
     var searchQuery by remember { mutableStateOf("") }
-    val prayer = remember { OfflineRepository.getTodayPrayerSchedule() }
-    val surahs = remember { OfflineRepository.surahList }
-    val filteredSurahs = remember(searchQuery) {
-        if (searchQuery.isBlank()) surahs
-        else surahs.filter {
+    var surahs by remember { mutableStateOf<List<Surah>?>(null) }
+    var loadError by remember { mutableStateOf<String?>(null) }
+    var lastRead by remember { mutableStateOf<Pair<Int, Int>?>(null) }
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(repo) {
+        lastRead = withContext(Dispatchers.IO) { loadLastRead(context) }
+        try {
+            surahs = repo.getSurahList()
+        } catch (e: Exception) {
+            loadError = e.message ?: "Gagal memuat daftar surah"
+        }
+    }
+
+    fun refresh() {
+        scope.launch {
+            loadError = null
+            try {
+                surahs = repo.getSurahList()
+            } catch (e: Exception) {
+                loadError = e.message ?: "Gagal memuat daftar surah"
+            }
+        }
+    }
+
+    val filteredSurahs = remember(searchQuery, surahs) {
+        val list = surahs ?: emptyList()
+        if (searchQuery.isBlank()) list
+        else list.filter {
             it.namaLatin.contains(searchQuery, ignoreCase = true) ||
-            it.nomor.toString() == searchQuery ||
-            it.arti.contains(searchQuery, ignoreCase = true)
+                it.nomor.toString() == searchQuery ||
+                it.arti.contains(searchQuery, ignoreCase = true)
         }
     }
 
@@ -61,13 +102,9 @@ fun HomeScreen(
             TopAppBar(
                 title = {
                     Column {
+                        Text("Al-Qur'an Pro", fontWeight = FontWeight.Bold, fontSize = 22.sp)
                         Text(
-                            text = "Al-Qur'an Pro",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 22.sp
-                        )
-                        Text(
-                            text = "Ketenangan hati dalam setiap ayat",
+                            "Ketenangan hati dalam setiap ayat",
                             fontSize = 11.sp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -77,123 +114,62 @@ fun HomeScreen(
         }
     ) { padding ->
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(horizontal = 16.dp),
+            modifier = Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(vertical = 12.dp)
         ) {
-            // Hero Card 1: Last Read Card
             item {
-                IOSHeroCard(
-                    brush = IOSGradients.HeroEmerald,
-                    onClick = { onSurahClick(1) }
-                ) {
+                val lastSurah = surahs?.find { it.nomor == lastRead?.first }
+                IOSHeroCard(onClick = { onSurahClick(lastRead?.first ?: 1) }) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        IOSPill(
-                            text = "Terakhir Dibaca",
-                            backgroundColor = Color.White.copy(alpha = 0.25f),
-                            contentColor = Color.White
-                        )
-                        IOSPill(
-                            text = "100% Offline",
-                            backgroundColor = Color.White.copy(alpha = 0.2f),
-                            contentColor = Color.White
-                        )
+                        IOSPill(text = if (lastRead == null) "Mulai Membaca" else "Terakhir Dibaca")
+                        IOSPill(text = "114 surah tersedia offline")
                     }
-
                     Spacer(modifier = Modifier.height(14.dp))
                     Text(
-                        text = "Al-Fatihah",
+                        text = lastSurah?.namaLatin ?: "Al-Fatihah",
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = "Ayat 1 dari 7 • Pembukaan",
+                        text = if (lastRead == null) "Ketuk untuk mulai membaca dari awal"
+                        else "Ayat ${lastRead?.second} • ${lastSurah?.arti ?: ""}",
                         fontSize = 13.sp,
-                        color = Color.White.copy(alpha = 0.8f)
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-
                     Spacer(modifier = Modifier.height(14.dp))
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "Lanjutkan Membaca ›",
+                            text = if (lastRead == null) "Mulai Membaca" else "Lanjutkan Membaca",
                             fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFFFCD34D)
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Icon(
+                            painter = painterResource(R.drawable.ic_chevron_right),
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
             }
 
-            // Hero Card 2: Next Prayer Countdown Card
             item {
-                IOSHeroCard(
-                    brush = IOSGradients.HeroPrayerNight,
-                    onClick = onPrayerClick
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        IOSPill(
-                            text = "Jadwal Sholat",
-                            backgroundColor = Color.White.copy(alpha = 0.2f),
-                            contentColor = Color.White
-                        )
-                        Text(
-                            text = "Jakarta (WIB)",
-                            fontSize = 12.sp,
-                            color = Color.White.copy(alpha = 0.8f)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        text = "Menuju ${prayer.nextPrayerName} (${prayer.nextPrayerTime})",
-                        fontSize = 13.sp,
-                        color = Color.White.copy(alpha = 0.85f)
-                    )
-                    Text(
-                        text = "-${prayer.countdownFormatted}",
-                        fontSize = 36.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
-                    )
-                }
-            }
-
-            // Quick Menu Grid 4 items
-            item {
-                Text(
-                    text = "Fitur Utama",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 4.dp)
-                )
-
+                Text("Fitur Utama", fontSize = 18.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 4.dp))
                 Spacer(modifier = Modifier.height(8.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                     HomeScreenMenu.entries.forEach { menu ->
                         QuickMenuItem(
                             menu = menu,
                             modifier = Modifier.weight(1f),
                             onClick = {
                                 when (menu) {
-                                    HomeScreenMenu.QURAN -> onSurahClick(1)
+                                    HomeScreenMenu.QURAN -> {}
                                     HomeScreenMenu.SHOLAT -> onPrayerClick()
                                     HomeScreenMenu.TASBIH -> onTasbihClick()
                                     HomeScreenMenu.TAHLIL -> onTahlilClick()
@@ -204,7 +180,6 @@ fun HomeScreen(
                 }
             }
 
-            // Search Bar & Surah List Section
             item {
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
@@ -212,131 +187,98 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Text("Daftar Surah", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                     Text(
-                        text = "Daftar Surah",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = "${filteredSurahs.size} Surah",
+                        text = if (surahs == null) "Memuat..." else "${filteredSurahs.size} Surah",
                         fontSize = 12.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
-
                 Spacer(modifier = Modifier.height(8.dp))
-
                 OutlinedTextField(
                     value = searchQuery,
                     onValueChange = { searchQuery = it },
                     placeholder = { Text("Cari surah (nama atau nomor)...", fontSize = 13.sp) },
+                    leadingIcon = { Icon(painterResource(R.drawable.ic_search), contentDescription = null) },
                     singleLine = true,
-                    shape = RoundedCornerShape(16.dp),
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = EmeraldPrimary,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.outline
-                    )
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
 
-            items(filteredSurahs) { surah ->
-                SurahItemCard(
-                    surah = surah,
-                    onClick = { onSurahClick(surah.nomor) }
-                )
+            when {
+                loadError != null -> item {
+                    IOSCard(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text("Gagal memuat data: $loadError", fontSize = 13.sp)
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Button(onClick = ::refresh) {
+                                Icon(painterResource(R.drawable.ic_refresh), contentDescription = null)
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text("Coba Lagi")
+                            }
+                        }
+                    }
+                }
+                surahs == null -> item {
+                    repeat(6) {
+                        IOSCard(modifier = Modifier.fillMaxWidth()) {
+                            Box(modifier = Modifier.fillMaxWidth().padding(20.dp), contentAlignment = Alignment.Center) {
+                                CircularProgressIndicator()
+                            }
+                        }
+                    }
+                }
+                filteredSurahs.isEmpty() -> item {
+                    IOSCard(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            "Tidak ada surah yang cocok.",
+                            modifier = Modifier.padding(20.dp),
+                            fontSize = 13.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+                else -> items(filteredSurahs, key = { it.nomor }) { surah ->
+                    SurahItemCard(surah = surah, onClick = { onSurahClick(surah.nomor) })
+                }
             }
         }
     }
 }
 
 @Composable
-private fun QuickMenuItem(
-    menu: HomeScreenMenu,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
-) {
-    val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()
-    val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.94f else 1f,
-        animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f),
-        label = "quick_menu_scale"
-    )
-    val view = LocalView.current
-
-    IOSCard(
-        modifier = modifier.scale(scale),
-        shape = RoundedCornerShape(18.dp),
-        onClick = {
-            view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-            onClick()
-        }
-    ) {
+private fun QuickMenuItem(menu: HomeScreenMenu, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    IOSCard(modifier = modifier, onClick = onClick) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 14.dp, horizontal = 4.dp),
+            modifier = Modifier.fillMaxWidth().padding(vertical = 14.dp, horizontal = 4.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = menu.icon, fontSize = 28.sp)
+            Icon(painter = painterResource(menu.iconRes), contentDescription = menu.label, modifier = Modifier.size(28.dp))
             Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = menu.label,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Center,
-                lineHeight = 14.sp
-            )
+            Text(menu.label, fontSize = 11.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center, lineHeight = 14.sp)
         }
     }
 }
 
 @Composable
-private fun SurahItemCard(
-    surah: Surah,
-    onClick: () -> Unit
-) {
-    IOSCard(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(18.dp),
-        onClick = onClick
-    ) {
+private fun SurahItemCard(surah: Surah, onClick: () -> Unit) {
+    IOSCard(modifier = Modifier.fillMaxWidth(), onClick = onClick) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 14.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Surah number pill
-            IOSPill(
-                text = "${surah.nomor}",
-                backgroundColor = EmeraldPrimary.copy(alpha = 0.12f),
-                contentColor = EmeraldPrimary,
-                modifier = Modifier.width(38.dp)
-            )
-
+            IOSPill(text = "${surah.nomor}", modifier = Modifier.width(38.dp))
             Spacer(modifier = Modifier.width(14.dp))
-
             Column(modifier = Modifier.weight(1f)) {
+                Text(surah.namaLatin, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                 Text(
-                    text = surah.namaLatin,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 15.sp
-                )
-                Text(
-                    text = "${surah.tempatTurun} • ${surah.jumlahAyat} ayat (${surah.arti})",
+                    "${surah.tempatTurun} • ${surah.jumlahAyat} ayat (${surah.arti})",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-
-            Text(
-                text = surah.nama,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Medium,
-                color = EmeraldPrimary
-            )
+            Text(surah.nama, fontSize = 20.sp, fontWeight = FontWeight.Medium)
         }
     }
 }

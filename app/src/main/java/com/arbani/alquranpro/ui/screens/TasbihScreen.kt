@@ -9,39 +9,41 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.arbani.alquranpro.R
 import com.arbani.alquranpro.ui.components.IOSCard
-import com.arbani.alquranpro.ui.theme.EmeraldPrimary
-import com.arbani.alquranpro.ui.theme.IOSGradients
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TasbihScreen(onBack: () -> Unit) {
-    var count by remember { mutableIntStateOf(0) }
-    var selectedTarget by remember { mutableIntStateOf(33) }
-    val zikirOptions = listOf("Subhanallah", "Alhamdulillah", "Allahu Akbar", "Astaghfirullah", "La ilaha illallah")
-    var selectedZikirIndex by remember { mutableIntStateOf(0) }
+    var count by rememberSaveable { mutableIntStateOf(0) }
+    var selectedTarget by rememberSaveable { mutableIntStateOf(33) }
+    val zikirOptions = remember {
+        listOf("Subhanallah", "Alhamdulillah", "Allahu Akbar", "Astaghfirullah", "La ilaha illallah")
+    }
+    var selectedZikirIndex by rememberSaveable { mutableIntStateOf(0) }
 
     val view = LocalView.current
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-
     val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.92f else 1f,
+        targetValue = if (isPressed) 0.95f else 1f,
         animationSpec = spring(dampingRatio = 0.6f, stiffness = 500f),
         label = "tasbih_scale"
     )
@@ -52,7 +54,7 @@ fun TasbihScreen(onBack: () -> Unit) {
                 title = { Text("Tasbih Digital", fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Text("‹", fontSize = 32.sp, fontWeight = FontWeight.Light)
+                        Icon(painter = painterResource(R.drawable.ic_arrow_back), contentDescription = "Kembali")
                     }
                 }
             )
@@ -62,19 +64,14 @@ fun TasbihScreen(onBack: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
+                .verticalScroll(rememberScrollState())
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Zikir Selector Card
-            IOSCard(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(20.dp)
-            ) {
+            IOSCard(modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(16.dp)) {
                 Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
@@ -86,74 +83,70 @@ fun TasbihScreen(onBack: () -> Unit) {
                     Text(
                         text = zikirOptions[selectedZikirIndex],
                         fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = EmeraldPrimary
+                        fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(10.dp))
-                    Row(
+                    androidx.compose.foundation.layout.FlowRow(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         zikirOptions.forEachIndexed { index, zikir ->
-                            if (index < 3) {
-                                FilterChip(
-                                    selected = selectedZikirIndex == index,
-                                    onClick = { selectedZikirIndex = index; count = 0 },
-                                    label = { Text(zikir.take(7) + "...", fontSize = 11.sp) }
-                                )
-                            }
+                            FilterChip(
+                                selected = selectedZikirIndex == index,
+                                onClick = {
+                                    if (selectedZikirIndex != index) {
+                                        selectedZikirIndex = index
+                                        count = 0
+                                    }
+                                },
+                                label = { Text(zikir, fontSize = 11.sp) }
+                            )
                         }
                     }
                 }
             }
 
-            // Big Tap Circle with Haptics
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+            Box(
+                modifier = Modifier
+                    .size(220.dp)
+                    .scale(scale)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surface)
+                    .border(2.dp, MaterialTheme.colorScheme.outlineVariant, CircleShape)
+                    .clickable(
+                        interactionSource = interactionSource,
+                        indication = null
+                    ) {
+                        view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+                        count++
+                        if (selectedTarget > 0 && count == selectedTarget) {
+                            view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                        }
+                    },
+                contentAlignment = Alignment.Center
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(230.dp)
-                        .scale(scale)
-                        .shadow(16.dp, CircleShape, ambientColor = EmeraldPrimary.copy(alpha = 0.25f), spotColor = EmeraldPrimary)
-                        .clip(CircleShape)
-                        .background(IOSGradients.HeroEmerald)
-                        .border(4.dp, Color.White.copy(alpha = 0.3f), CircleShape)
-                        .clickable(
-                            interactionSource = interactionSource,
-                            indication = null
-                        ) {
-                            view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-                            count++
-                            if (selectedTarget > 0 && count % selectedTarget == 0) {
-                                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                            }
-                        },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = count.toString(),
-                            fontSize = 60.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                            color = Color.White
-                        )
-                        Text(
-                            text = if (selectedTarget > 0) "Target: $selectedTarget" else "Tanpa Batas",
-                            fontSize = 14.sp,
-                            color = Color.White.copy(alpha = 0.8f)
-                        )
-                        Text(
-                            text = "Ketuk Di Sini",
-                            fontSize = 12.sp,
-                            color = Color.White.copy(alpha = 0.6f),
-                            modifier = Modifier.padding(top = 4.dp)
-                        )
-                    }
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        text = count.toString(),
+                        fontSize = 60.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    Text(
+                        text = if (selectedTarget > 0) "Target: $selectedTarget" else "Tanpa Batas",
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = "Ketuk Di Sini",
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
                 }
             }
 
-            // Target selector & Reset
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -161,13 +154,7 @@ fun TasbihScreen(onBack: () -> Unit) {
             ) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     listOf(33, 99, 0).forEach { target ->
-                        FilledTonalButton(
-                            onClick = { selectedTarget = target },
-                            colors = ButtonDefaults.filledTonalButtonColors(
-                                containerColor = if (selectedTarget == target) EmeraldPrimary else MaterialTheme.colorScheme.surfaceVariant,
-                                contentColor = if (selectedTarget == target) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        ) {
+                        FilledTonalButton(onClick = { selectedTarget = target }) {
                             Text(if (target == 0) "∞" else target.toString(), fontWeight = FontWeight.Bold)
                         }
                     }
