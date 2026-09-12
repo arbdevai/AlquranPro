@@ -17,8 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalView
@@ -26,40 +24,32 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.arbani.alquranpro.ui.theme.IOSGradients
 
 /**
- * iOS 26 Squircle Card with subtle glassmorphism border and spring press animation.
+ * iOS 26 Flat Grouped Card - zero elevation, hairline border, solid surface.
  */
 @Composable
 fun IOSCard(
     modifier: Modifier = Modifier,
-    shape: Shape = RoundedCornerShape(24.dp),
+    shape: Shape = RoundedCornerShape(18.dp),
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
-    borderColor: Color = MaterialTheme.colorScheme.outline,
+    borderColor: Color = MaterialTheme.colorScheme.outlineVariant,
     borderWidth: Dp = 1.dp,
-    elevation: Dp = 4.dp,
     onClick: (() -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val scale by animateFloatAsState(
-        targetValue = if (isPressed && onClick != null) 0.97f else 1f,
-        animationSpec = spring(dampingRatio = 0.75f, stiffness = 400f),
-        label = "ios_card_press_scale"
+        targetValue = if (isPressed && onClick != null) 0.98f else 1f,
+        animationSpec = spring(dampingRatio = 0.8f, stiffness = 500f),
+        label = "ios_card_press"
     )
     val view = LocalView.current
 
     Box(
         modifier = modifier
             .scale(scale)
-            .shadow(
-                elevation = elevation,
-                shape = shape,
-                ambientColor = Color.Black.copy(alpha = 0.06f),
-                spotColor = Color.Black.copy(alpha = 0.08f)
-            )
             .clip(shape)
             .background(backgroundColor)
             .border(borderWidth, borderColor, shape)
@@ -79,21 +69,20 @@ fun IOSCard(
 }
 
 /**
- * iOS Glass Gradient Hero Card for Last Read & Prayer Time
+ * iOS Flat Hero Card - solid grouped surface, no gradients, no colored glow.
  */
 @Composable
 fun IOSHeroCard(
     modifier: Modifier = Modifier,
-    brush: Brush = IOSGradients.HeroEmerald,
     onClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    val shape = RoundedCornerShape(28.dp)
+    val shape = RoundedCornerShape(20.dp)
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
     val scale by animateFloatAsState(
         targetValue = if (isPressed && onClick != null) 0.98f else 1f,
-        animationSpec = spring(dampingRatio = 0.8f, stiffness = 450f),
+        animationSpec = spring(dampingRatio = 0.8f, stiffness = 500f),
         label = "hero_card_scale"
     )
     val view = LocalView.current
@@ -102,15 +91,9 @@ fun IOSHeroCard(
         modifier = modifier
             .fillMaxWidth()
             .scale(scale)
-            .shadow(
-                elevation = 10.dp,
-                shape = shape,
-                ambientColor = Color(0xFF0D9488).copy(alpha = 0.2f),
-                spotColor = Color(0xFF0D9488).copy(alpha = 0.3f)
-            )
             .clip(shape)
-            .background(brush)
-            .border(1.dp, Color.White.copy(alpha = 0.2f), shape)
+            .background(MaterialTheme.colorScheme.surface)
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, shape)
             .then(
                 if (onClick != null) {
                     Modifier.clickable(
@@ -129,14 +112,14 @@ fun IOSHeroCard(
 }
 
 /**
- * iOS Pill Badge / Tag
+ * iOS Neutral Pill Badge - theme-derived, no white-on-gradient styling.
  */
 @Composable
 fun IOSPill(
     text: String,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = Color.White.copy(alpha = 0.2f),
-    contentColor: Color = Color.White
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
+    contentColor: Color = MaterialTheme.colorScheme.onSurfaceVariant
 ) {
     Box(
         modifier = modifier

@@ -5,94 +5,71 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
-val EmeraldPrimary = Color(0xFF0D9488)       // iOS Teal-Emerald
-val EmeraldDark = Color(0xFF0F766E)
-val EmeraldLight = Color(0xFF14B8A6)
-val SageGold = Color(0xFFF59E0B)             // Warm gold accent
-val SageGoldLight = Color(0xFFFCD34D)
+/**
+ * iOS 26 Flat System Gray Theme - No gradients, fully native grouped aesthetic.
+ */
 
-// iOS Glass Backgrounds
-val GlassLightBg = Color(0xFFF8FAFC)
-val GlassLightCard = Color(0xFFFFFFFF)
-val GlassLightCardBorder = Color(0x1A0F172A)
-val GlassLightSecondary = Color(0xFFF1F5F9)
+// iOS System Grouped Backgrounds (Flat Gray)
+val IosLightGroupedBg = Color(0xFFF2F2F7)
+val IosLightCard = Color(0xFFFFFFFF)
+val IosLightSecondary = Color(0xFFE5E5EA)
+val IosLightBorder = Color(0xFFD1D1D6)
 
-val GlassDarkBg = Color(0xFF0B131E)
-val GlassDarkCard = Color(0xFF131F2E)
-val GlassDarkCardBorder = Color(0x2E94A3B8)
-val GlassDarkSecondary = Color(0xFF1E293B)
+val IosDarkGroupedBg = Color(0xFF000000)
+val IosDarkCard = Color(0xFF1C1C1E)
+val IosDarkSecondary = Color(0xFF2C2C2E)
+val IosDarkBorder = Color(0xFF38383A)
 
-val TextPrimaryLight = Color(0xFF0F172A)
-val TextSecondaryLight = Color(0xFF64748B)
-val TextPrimaryDark = Color(0xFFF8FAFC)
-val TextSecondaryDark = Color(0xFF94A3B8)
+val IosTextPrimaryLight = Color(0xFF1C1C1E)
+val IosTextSecondaryLight = Color(0xFF636366)
+val IosTextPrimaryDark = Color(0xFFF2F2F7)
+val IosTextSecondaryDark = Color(0xFFAEAEB2)
+
+// Neutral Graphite Accent (replaces Emerald/Gold)
+val GraphitePrimary = Color(0xFF374151)
+val GraphitePrimaryDark = Color(0xFFD1D5DB)
+val GraphiteContainer = Color(0xFFE5E7EB)
+val GraphiteContainerDark = Color(0xFF3A3A3C)
 
 private val DarkColorScheme = darkColorScheme(
-    primary = EmeraldLight,
-    onPrimary = Color(0xFF042F2C),
-    primaryContainer = EmeraldDark,
-    onPrimaryContainer = Color(0xFFCCFBF1),
-    secondary = SageGoldLight,
-    onSecondary = Color(0xFF451A03),
-    background = GlassDarkBg,
-    onBackground = TextPrimaryDark,
-    surface = GlassDarkCard,
-    onSurface = TextPrimaryDark,
-    surfaceVariant = GlassDarkSecondary,
-    onSurfaceVariant = TextSecondaryDark,
-    outline = GlassDarkCardBorder
+    primary = GraphitePrimaryDark,
+    onPrimary = Color(0xFF111827),
+    primaryContainer = GraphiteContainerDark,
+    onPrimaryContainer = IosTextPrimaryDark,
+    secondary = GraphitePrimaryDark,
+    onSecondary = Color(0xFF111827),
+    background = IosDarkGroupedBg,
+    onBackground = IosTextPrimaryDark,
+    surface = IosDarkCard,
+    onSurface = IosTextPrimaryDark,
+    surfaceVariant = IosDarkSecondary,
+    onSurfaceVariant = IosTextSecondaryDark,
+    surfaceContainer = IosDarkSecondary,
+    surfaceContainerLow = IosDarkCard,
+    outline = Color(0xFF8E8E93),
+    outlineVariant = IosDarkBorder
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = EmeraldPrimary,
+    primary = GraphitePrimary,
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFCCFBF1),
-    onPrimaryContainer = Color(0xFF115E59),
-    secondary = SageGold,
+    primaryContainer = GraphiteContainer,
+    onPrimaryContainer = Color(0xFF1F2937),
+    secondary = GraphitePrimary,
     onSecondary = Color.White,
-    background = GlassLightBg,
-    onBackground = TextPrimaryLight,
-    surface = GlassLightCard,
-    onSurface = TextPrimaryLight,
-    surfaceVariant = GlassLightSecondary,
-    onSurfaceVariant = TextSecondaryLight,
-    outline = GlassLightCardBorder
+    background = IosLightGroupedBg,
+    onBackground = IosTextPrimaryLight,
+    surface = IosLightCard,
+    onSurface = IosTextPrimaryLight,
+    surfaceVariant = IosLightSecondary,
+    onSurfaceVariant = IosTextSecondaryLight,
+    surfaceContainer = IosLightSecondary,
+    surfaceContainerLow = IosLightCard,
+    outline = Color(0xFF8E8E93),
+    outlineVariant = IosLightBorder
 )
-
-object IOSGradients {
-    val HeroEmerald = Brush.linearGradient(
-        colors = listOf(
-            Color(0xFF0D9488),
-            Color(0xFF0F766E),
-            Color(0xFF115E59)
-        )
-    )
-
-    val HeroPrayerNight = Brush.linearGradient(
-        colors = listOf(
-            Color(0xFF1E1B4B),
-            Color(0xFF312E81),
-            Color(0xFF0F766E)
-        )
-    )
-
-    val GlassCardGradient = Brush.verticalGradient(
-        colors = listOf(
-            Color(0x14FFFFFF),
-            Color(0x05FFFFFF)
-        )
-    )
-
-    val GoldPill = Brush.horizontalGradient(
-        colors = listOf(
-            Color(0xFFF59E0B),
-            Color(0xFFFBBF24)
-        )
-    )
-}
 
 @Composable
 fun AlquranProTheme(
