@@ -28,5 +28,5 @@ object EquranV2 {
     fun verseAsset(nomor: Int) = "$SEED_DIR/verses_$nomor.json"
 
     const val FEATURES_SURAT_LITE = true
-    const val FEATURES_VERSUS_AD LIB = true
+    const val FEATURES_VERSES_AVAILABLE = true
 }
