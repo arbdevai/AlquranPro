@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.arbani.alquranpro.R
 import com.arbani.alquranpro.ui.components.IOSCard
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun TasbihScreen(onBack: () -> Unit) {
     var count by rememberSaveable { mutableIntStateOf(0) }
