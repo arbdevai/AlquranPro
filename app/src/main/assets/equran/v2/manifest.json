@@ -1,0 +1,1153 @@
+{
+  "schemaVersion": "2.0",
+  "source": "https://equran.id/api/v2",
+  "retrievedAtUtc": "2026-09-12T13:24:29Z",
+  "totalSurahs": 114,
+  "totalVerses": 6236,
+  "files": {
+    "surat.json": {
+      "size": 123326,
+      "sha256": "c01fe959042c5fcb32d7ad7e0c22cbb18c277c5cf8cc8a79d86f0c0fe33f1e59"
+    },
+    "surat/1.json": {
+      "size": 6385,
+      "sha256": "78fa7447eacb2256a93e5cccf5ee362895ee0aa113e922601bcda2e488cd846f",
+      "verses": 7
+    },
+    "tafsir/1.json": {
+      "size": 49048,
+      "sha256": "f200a20f75f6f9afbf169219e16689af718fca1f70a988febff60c02e0a4b2a6",
+      "tafsirs": 7
+    },
+    "surat/2.json": {
+      "size": 396697,
+      "sha256": "19e529a21baca8a44c1f36838ccc37a47cb304c0a07b194dce9ed3e44bc59015",
+      "verses": 286
+    },
+    "tafsir/2.json": {
+      "size": 669197,
+      "sha256": "2ce8ec19641649d8146348397c289111c7425e2466e891a2847de5fed108b8bf",
+      "tafsirs": 286
+    },
+    "surat/3.json": {
+      "size": 246643,
+      "sha256": "c2470f4d3efbbc4161454a22c537e8235c01a98dd9760d9a4e9272823287125c",
+      "verses": 200
+    },
+    "tafsir/3.json": {
+      "size": 302168,
+      "sha256": "bfd5b943058e8b4eacece2a62a27a9053c25188478ff93f02df2b7b46554bac1",
+      "tafsirs": 200
+    },
+    "surat/4.json": {
+      "size": 246502,
+      "sha256": "103cb93bd280f5af62e2a8ae5e1f84e6c24134b19c704b48061b3970bc88efa8",
+      "verses": 176
+    },
+    "tafsir/4.json": {
+      "size": 309021,
+      "sha256": "ac0e29e08a4c5985b4508a68cad72c4f99adf803707406fd5c45f5335f3d9f92",
+      "tafsirs": 176
+    },
+    "surat/5.json": {
+      "size": 177849,
+      "sha256": "44a37201aab701d1e179691b14c3be7839f62048ef6984d605b9b7c946967eb9",
+      "verses": 120
+    },
+    "tafsir/5.json": {
+      "size": 241124,
+      "sha256": "0a7fbbb5e9959c7e36aefa792fb83d5dff1e7d4164a04b7b9e7ced0f18114889",
+      "tafsirs": 120
+    },
+    "surat/6.json": {
+      "size": 211674,
+      "sha256": "3114c51a61195565db793bb21dbcd68580ecc995e3558ba49dd678384c849bd9",
+      "verses": 165
+    },
+    "tafsir/6.json": {
+      "size": 345104,
+      "sha256": "5c7abb7c84c5f6362dbd4c6b775ea7989b8cf29f1c1f38d448f1cb310fcc4db9",
+      "tafsirs": 165
+    },
+    "surat/7.json": {
+      "size": 247461,
+      "sha256": "30d5e2fadfb38215a9f0e5c26f24ba703380563a4d20dc16cb3bf7ed8a77a2e8",
+      "verses": 206
+    },
+    "tafsir/7.json": {
+      "size": 398925,
+      "sha256": "0fc75a228bc29e4a423c1ba2a85966f24bc9defd0e9bdb48aebef41c2886b772",
+      "tafsirs": 206
+    },
+    "surat/8.json": {
+      "size": 93216,
+      "sha256": "5ea729732c5b9be6733eba32b1dcfa7855f34604ee4afb0cfbed68bdd2c8da64",
+      "verses": 75
+    },
+    "tafsir/8.json": {
+      "size": 151057,
+      "sha256": "629f0ada301639fdecb8701192c22215f93c26958d3bf08fd1d7dbac47f64dcd",
+      "tafsirs": 75
+    },
+    "surat/9.json": {
+      "size": 174245,
+      "sha256": "0d8d05e907357cb803fd17ddb7f46ba37c86f0670456dca80a2dd2ba07f19083",
+      "verses": 129
+    },
+    "tafsir/9.json": {
+      "size": 266325,
+      "sha256": "d4012924cc4d1fb7688766d0d53e4198eb88cde3744aaa7d8a8cae8ceec85458",
+      "tafsirs": 129
+    },
+    "surat/10.json": {
+      "size": 131792,
+      "sha256": "d0362074efdf8b32c67556e5c58726f5fa38549a99f5a082d4fa9c3c6a516205",
+      "verses": 109
+    },
+    "tafsir/10.json": {
+      "size": 189488,
+      "sha256": "0197e044f62cf01322387b4d9e11072c4a5257cf668ee39ecd19f3138d349667",
+      "tafsirs": 109
+    },
+    "surat/11.json": {
+      "size": 142554,
+      "sha256": "d2e53b28c3b4837e5ddc8f916a65cffbbc0a9d2c72eecc49c31de149f7778e23",
+      "verses": 123
+    },
+    "tafsir/11.json": {
+      "size": 141080,
+      "sha256": "03010742e3f4ffcf381f71237a3ab95ed6f1b1871bf65ba1632a9da523bd0f7f",
+      "tafsirs": 123
+    },
+    "surat/12.json": {
+      "size": 130861,
+      "sha256": "417d4c62d713f9ea75d83f22378c935dc1804ded6ca4fa6209bf85848e849515",
+      "verses": 111
+    },
+    "tafsir/12.json": {
+      "size": 121067,
+      "sha256": "c2c865c38d7f9bc6e4c99942133990b4d4f35d5d1598108b67dd58f80606aa70",
+      "tafsirs": 111
+    },
+    "surat/13.json": {
+      "size": 58457,
+      "sha256": "83ecab7b7cf18dbccd8c952c5efdf6cafc52219777eb391243a5ecfaa4a17521",
+      "verses": 43
+    },
+    "tafsir/13.json": {
+      "size": 112510,
+      "sha256": "f6412e93a6d9cd4c86574c19162e7aac20901bdc1f691bb5651b36219be99454",
+      "tafsirs": 43
+    },
+    "surat/14.json": {
+      "size": 62947,
+      "sha256": "5d372f092d704a1295e0d978eea7b995ffe40dc8fdd130de1a2479bd2367ddb4",
+      "verses": 52
+    },
+    "tafsir/14.json": {
+      "size": 107575,
+      "sha256": "1f9ad4577ee3b8fd1368574b3040f10e4d7adf400bb037355250742880fa1c26",
+      "tafsirs": 52
+    },
+    "surat/15.json": {
+      "size": 81807,
+      "sha256": "4f8da1d5a761a964a10921fe1ea3c9d171f039838ec7520cb5970467efc5e557",
+      "verses": 99
+    },
+    "tafsir/15.json": {
+      "size": 213100,
+      "sha256": "4eaae4bf43d95149d373a6562de709939ecba193df729da404c940323cc10bfb",
+      "tafsirs": 99
+    },
+    "surat/16.json": {
+      "size": 143618,
+      "sha256": "9902d825504674d72b5ab3b94707125f7d437bb7f5e81068f205968436d265b8",
+      "verses": 128
+    },
+    "tafsir/16.json": {
+      "size": 229784,
+      "sha256": "120de1965f8e878424ce419ebe8d3768956680f564ff77dd805b4ef746d57332",
+      "tafsirs": 128
+    },
+    "surat/17.json": {
+      "size": 123863,
+      "sha256": "d709fcbd5d827329bf49eb892e12941760ebdbb14b7606cd6cd34c8cbd553617",
+      "verses": 111
+    },
+    "tafsir/17.json": {
+      "size": 232953,
+      "sha256": "9250c82b6e8b404bca6c285aad183b339edb968b3d9866177328f790e7fe70fa",
+      "tafsirs": 111
+    },
+    "surat/18.json": {
+      "size": 123351,
+      "sha256": "bf9803244f5b435f796296c239edcfeb3a34b6d8d28ee3fffeca4f090536b333",
+      "verses": 110
+    },
+    "tafsir/18.json": {
+      "size": 162988,
+      "sha256": "09cf76c973f4486813e11817bc0caea5c5af9f0b067549c3ad5647067febe78d",
+      "tafsirs": 110
+    },
+    "surat/19.json": {
+      "size": 92212,
+      "sha256": "9aec02936731ee3236e119151edd342c574ecf8794786230d04e5108f1ea22d7",
+      "verses": 98
+    },
+    "tafsir/19.json": {
+      "size": 106705,
+      "sha256": "acb7e6913e63e830fb7a9f76c12d736524b2d1258961bd147fdb85b255e260eb",
+      "tafsirs": 98
+    },
+    "surat/20.json": {
+      "size": 126332,
+      "sha256": "44b703f3006f845235cc6d8866fcfac804cd7fb04bf97fbc426a5292a8e69584",
+      "verses": 135
+    },
+    "tafsir/20.json": {
+      "size": 145036,
+      "sha256": "379426a2e70c41b6ca524a7d120ebf653116071332d3bb2d9093ceb1c93ed640",
+      "tafsirs": 135
+    },
+    "surat/21.json": {
+      "size": 109779,
+      "sha256": "07a81f921a8dcbf5cbff771b374f19bf1658b9f0da851b7dd45aae3c3b670fbe",
+      "verses": 112
+    },
+    "tafsir/21.json": {
+      "size": 140653,
+      "sha256": "1ff79297ef24c6dac3756e64656fb01c2a5f358fa49279934b073e1bcd2fb155",
+      "tafsirs": 112
+    },
+    "surat/22.json": {
+      "size": 92919,
+      "sha256": "c5882d8c107594c991bb7812ab29a10dd48965a4483c2119aff3255706d718a6",
+      "verses": 78
+    },
+    "tafsir/22.json": {
+      "size": 200423,
+      "sha256": "5086f4c877da2a853c9946bb3a6a60e036cdc5b00bb23f5eb58e8bac8a2710b0",
+      "tafsirs": 78
+    },
+    "surat/23.json": {
+      "size": 105901,
+      "sha256": "52b1696d5760958a6eddc12a7df7dfc738c6bbb1d5ccec1e56527528512c7dca",
+      "verses": 118
+    },
+    "tafsir/23.json": {
+      "size": 130375,
+      "sha256": "4cf49efe6004b823ea311062afafb384fd932c5fffac5c27b5b5da31b6bbfc06",
+      "tafsirs": 118
+    },
+    "surat/24.json": {
+      "size": 88759,
+      "sha256": "3a3ce4a49437bb49f6066991af8b6c0fb2bb9952851c2f0436d170b2c7656b08",
+      "verses": 64
+    },
+    "tafsir/24.json": {
+      "size": 115910,
+      "sha256": "6d53c351228eec1104b99031cd03a5ada2728a218ff816af1eca3bf78dccc749",
+      "tafsirs": 64
+    },
+    "surat/25.json": {
+      "size": 78771,
+      "sha256": "07f69fc94a9d048d31a04031b2d5c6b38bf05d52a2cdbae84ce356d10eaf8558",
+      "verses": 77
+    },
+    "tafsir/25.json": {
+      "size": 125775,
+      "sha256": "e966fe218558e3a30843e6cbf34025f11976155eb28b13ff291a4ae68e8c4ab2",
+      "tafsirs": 77
+    },
+    "surat/26.json": {
+      "size": 176143,
+      "sha256": "d16f448ca457b59d9acb25de82e2cfa7d8c371fbb2baca4947d06c6b1e424a69",
+      "verses": 227
+    },
+    "tafsir/26.json": {
+      "size": 269594,
+      "sha256": "b6487bc60f9102a821599e86fa5ff54b3a9d26244f8d9dd948b29af540fc4b81",
+      "tafsirs": 227
+    },
+    "surat/27.json": {
+      "size": 98549,
+      "sha256": "f76d50dca423479749519d3bb7757ec45240b296dd1b8c20f79620ca5e2578ca",
+      "verses": 93
+    },
+    "tafsir/27.json": {
+      "size": 142257,
+      "sha256": "91fae3b5a3b1ffde8d042187943eb64f4cf809cea2849cea8f8329636acee8e0",
+      "tafsirs": 93
+    },
+    "surat/28.json": {
+      "size": 105705,
+      "sha256": "676996f49115774973a26b2d0df30e0658ace7fd85a0ede023d46a553b9ab3b9",
+      "verses": 88
+    },
+    "tafsir/28.json": {
+      "size": 125752,
+      "sha256": "e27956b6b12ce56a069c786c3bc105d759e7fe6eda99584495bd9ecd099d62f9",
+      "tafsirs": 88
+    },
+    "surat/29.json": {
+      "size": 78382,
+      "sha256": "3e5d3d373c78edf5b00701fb10d7d6837c3b4ef3132b461c797d1e6119ed34c8",
+      "verses": 69
+    },
+    "tafsir/29.json": {
+      "size": 131758,
+      "sha256": "b5b7a17b2b83dbef3d274a57741ecf3bb94146145218b62baa90b12923c5d1d6",
+      "tafsirs": 69
+    },
+    "surat/30.json": {
+      "size": 65884,
+      "sha256": "dffa909569086b7ae3fcaa6e44ae37b0202fff1140a6c9b35a5ea8af3291a777",
+      "verses": 60
+    },
+    "tafsir/30.json": {
+      "size": 152526,
+      "sha256": "f8d2095239f2debdc38b7cbd15f6c53016832bb955720e84a00bd5eda00a1c59",
+      "tafsirs": 60
+    },
+    "surat/31.json": {
+      "size": 39927,
+      "sha256": "cb3fb69f423dc1244682042a34a909632cf53f9390457bbf1be9d20933968305",
+      "verses": 34
+    },
+    "tafsir/31.json": {
+      "size": 67072,
+      "sha256": "efa3a12cd40e81b518033a693b0bcf495c56445a8a2c82b70597e9a2d2eceba0",
+      "tafsirs": 34
+    },
+    "surat/32.json": {
+      "size": 31870,
+      "sha256": "c9df129fa20248dda14a22025ac996efedb41f160fa217d1d2afb737dab987c7",
+      "verses": 30
+    },
+    "tafsir/32.json": {
+      "size": 38445,
+      "sha256": "3d7489e2a44adc6320d48636b5da86ee09976f3f5383fcc2d4cb7700c011af21",
+      "tafsirs": 30
+    },
+    "surat/33.json": {
+      "size": 92552,
+      "sha256": "8485c21773b74b852b356cceb9756c38a9d0cc360fafce424fa7bccdbe3281f6",
+      "verses": 73
+    },
+    "tafsir/33.json": {
+      "size": 102921,
+      "sha256": "a00ea204261e201470885ee6f1d8024c68e379f09e11f04d98406d8c66101c57",
+      "tafsirs": 73
+    },
+    "surat/34.json": {
+      "size": 65060,
+      "sha256": "b0439ff88934a5d8a0ff712204614e47ea7fef01c6af3fefb788b6c1e8f56c78",
+      "verses": 54
+    },
+    "tafsir/34.json": {
+      "size": 91847,
+      "sha256": "9843fb7fc64c82fef96f0c4aa12ac649901eb370733a90ff63cf37f1e097b220",
+      "tafsirs": 54
+    },
+    "surat/35.json": {
+      "size": 56029,
+      "sha256": "1a2035021193fe38ff7c545e86c20cb785fe0641286d02a5d7ddafc4ba1c8ca0",
+      "verses": 45
+    },
+    "tafsir/35.json": {
+      "size": 78981,
+      "sha256": "c8ff41ef12c71057a5a7decfaf3a5a438c353aa190c28eb1f8b56b5629e879dd",
+      "tafsirs": 45
+    },
+    "surat/36.json": {
+      "size": 75108,
+      "sha256": "7107c805ef0325b6f78a2d824248b21fc01785ae91a025c866efd621c6a530db",
+      "verses": 83
+    },
+    "tafsir/36.json": {
+      "size": 95755,
+      "sha256": "2beec60b187b979a4f7d256f37afaa37c87136711fc33612da3b7f7de776b1df",
+      "tafsirs": 83
+    },
+    "surat/37.json": {
+      "size": 135285,
+      "sha256": "d31bda25efac069be01f9501b467aa12a45d6f66542ab501f7f126d59cea0f6a",
+      "verses": 182
+    },
+    "tafsir/37.json": {
+      "size": 220720,
+      "sha256": "2bcb5b9e04e81611d9f2db9a36f41cb87c0d725709d64a6f5fedd5351f214288",
+      "tafsirs": 182
+    },
+    "surat/38.json": {
+      "size": 78142,
+      "sha256": "8db08d7a325499a646cbec6f559a3b446aba47f4cf415b6ae95186f22ccf65ce",
+      "verses": 88
+    },
+    "tafsir/38.json": {
+      "size": 117328,
+      "sha256": "915239921456f7b6af708d4ccfa920eeaec93e74918913a73a0278253ff82756",
+      "tafsirs": 88
+    },
+    "surat/39.json": {
+      "size": 87132,
+      "sha256": "f21be8168ba39ca666171166742ba9e6eefc3a49caf35a83271f5ead35dea998",
+      "verses": 75
+    },
+    "tafsir/39.json": {
+      "size": 120339,
+      "sha256": "7917d7693dce9f2c58474b15956336ba9c1ed0582f2c1834d387e87a1ba85064",
+      "tafsirs": 75
+    },
+    "surat/40.json": {
+      "size": 94819,
+      "sha256": "c33c9da854537bc275b62ca8ec3a18decfd217eb66841f7cc97af528472b460e",
+      "verses": 85
+    },
+    "tafsir/40.json": {
+      "size": 122770,
+      "sha256": "7203e8c84c206af1ef8dfd35de5efa33ed4ae1cbe51d5fd499b448eb0f71b92e",
+      "tafsirs": 85
+    },
+    "surat/41.json": {
+      "size": 62286,
+      "sha256": "60c839eccad4a5070d34b69e71221441b8c68a9d18771dfc2be66c5a09b5b694",
+      "verses": 54
+    },
+    "tafsir/41.json": {
+      "size": 93652,
+      "sha256": "e096a1b3e676fe9c900b874e5f8c25b8933f4d3908390446ef8d88434c96738e",
+      "tafsirs": 54
+    },
+    "surat/42.json": {
+      "size": 63205,
+      "sha256": "39be60e1c2ad2732ad3b06452c3a5e87b25a4e6c891ac0f6526ade39a53f753b",
+      "verses": 53
+    },
+    "tafsir/42.json": {
+      "size": 81556,
+      "sha256": "fc8bf678b575330a932842172cbf5b621dc34007936c6067579f8d0d19d3e028",
+      "tafsirs": 53
+    },
+    "surat/43.json": {
+      "size": 83970,
+      "sha256": "cb5bd6f0ff77880a43f87882fabfdb9a3f6fa44926a871f76c350b81da25cea1",
+      "verses": 89
+    },
+    "tafsir/43.json": {
+      "size": 99600,
+      "sha256": "d86366a602a892cc3efe639cf3984b645658feb8ab0eaf11a90d6067913fda88",
+      "tafsirs": 89
+    },
+    "surat/44.json": {
+      "size": 47474,
+      "sha256": "e8c324c88a91da25694ee61ee9caa7846905208aaa0a62fa9ba18ea032fc3ec8",
+      "verses": 59
+    },
+    "tafsir/44.json": {
+      "size": 75621,
+      "sha256": "5369486bae22b0b5324e5cec290ccd08d2faf7f887e101a04b46f097c8fabf65",
+      "tafsirs": 59
+    },
+    "surat/45.json": {
+      "size": 40360,
+      "sha256": "328f0e1e8d875879579ce57d763b7b9c41e823245c99703095ece268887c876c",
+      "verses": 37
+    },
+    "tafsir/45.json": {
+      "size": 81605,
+      "sha256": "5b30eab3f9818274c5d8f9979cbda3e35eb60de9dac0248b66cd4ff29e6d7147",
+      "tafsirs": 37
+    },
+    "surat/46.json": {
+      "size": 45510,
+      "sha256": "fe7a064260ae31bfd240cd5c2b89d4110d05385cd66749d644471d31b7f8e905",
+      "verses": 35
+    },
+    "tafsir/46.json": {
+      "size": 89058,
+      "sha256": "06fe20fe26404f91edce488e118a3ec53536c0653e0091136730a7bf902cb359",
+      "tafsirs": 35
+    },
+    "surat/47.json": {
+      "size": 44553,
+      "sha256": "9e32b43f6d900150c06f39b36a93e589ce500d4b9f912df882b9002f893c3151",
+      "verses": 38
+    },
+    "tafsir/47.json": {
+      "size": 59941,
+      "sha256": "b22bed005928bb9321812bf05d70707086a77a0c3b3c5e3ad2d1177190257729",
+      "tafsirs": 38
+    },
+    "surat/48.json": {
+      "size": 40452,
+      "sha256": "84908649ee0301626b88ad9aba99164692d14f9519ebf676b5f36cd128b36ff3",
+      "verses": 29
+    },
+    "tafsir/48.json": {
+      "size": 52192,
+      "sha256": "775e7a6c597de0be019773eb53813826d8eb6f3e988aad21230c8a565a4d9b43",
+      "tafsirs": 29
+    },
+    "surat/49.json": {
+      "size": 24789,
+      "sha256": "1809f1aec8a0f22191961d8eb828108d0bfa5e6667a035438e5f9a60cbea0021",
+      "verses": 18
+    },
+    "tafsir/49.json": {
+      "size": 27621,
+      "sha256": "674f458ec7e372da69007fc03ab7d83df190b6ecf8254bee11fd1af3f6b99e38",
+      "tafsirs": 18
+    },
+    "surat/50.json": {
+      "size": 40236,
+      "sha256": "504bbed7a8dd6cd36131ba6ec761d6c432c8869a828a615cf8024ce2e1bb31b3",
+      "verses": 45
+    },
+    "tafsir/50.json": {
+      "size": 39385,
+      "sha256": "12c96b9b7a04dc18facb4ab7df96fe0171c897fddf0ebc597facf30e57c0525a",
+      "tafsirs": 45
+    },
+    "surat/51.json": {
+      "size": 48261,
+      "sha256": "728937eeedd4be0a63b9a8b8f6ad8f30501958f5ca484375e25218e1b6864eed",
+      "verses": 60
+    },
+    "tafsir/51.json": {
+      "size": 59565,
+      "sha256": "efbfb99e4aa9657c248a915e4e59965e55b5d4d1a1f8d838b40333ef9fcdb1a2",
+      "tafsirs": 60
+    },
+    "surat/52.json": {
+      "size": 40186,
+      "sha256": "825e0176aec2d15c1b0c4e5b430a9bea69d0cd88fe73a0caab8e885312b10145",
+      "verses": 49
+    },
+    "tafsir/52.json": {
+      "size": 48497,
+      "sha256": "29ae077131caf638072a94aa6de90cc0b344a931d9b8996d32c021af3e610565",
+      "tafsirs": 49
+    },
+    "surat/53.json": {
+      "size": 48134,
+      "sha256": "21230a62e4e58266638a905de0df193529974ac4e82a6a6abc8533e5a6789a6b",
+      "verses": 62
+    },
+    "tafsir/53.json": {
+      "size": 62761,
+      "sha256": "f553569a526d5e718a619234d84585ad3daa7983dec631e3f0f484c5e060737e",
+      "tafsirs": 62
+    },
+    "surat/54.json": {
+      "size": 45069,
+      "sha256": "9d9576656e0ed05a5a0748048ebf69c97da5dd5bb53c614ea774f1bab7889b57",
+      "verses": 55
+    },
+    "tafsir/54.json": {
+      "size": 31681,
+      "sha256": "2686103f590fdb6577c133dcd2e101aabc53e51282a65165d8b88cd04157bbb8",
+      "tafsirs": 55
+    },
+    "surat/55.json": {
+      "size": 58130,
+      "sha256": "ac215dd8dad1f5cab1f19bf4ef5dd0f3cba95d9d9c57a9480e23c44cd4a26ede",
+      "verses": 78
+    },
+    "tafsir/55.json": {
+      "size": 67549,
+      "sha256": "13465ad9a753d3550a692984b47ebdb653d7f6b0de30d164fdb95c870ba87bf3",
+      "tafsirs": 78
+    },
+    "surat/56.json": {
+      "size": 68215,
+      "sha256": "285917060fa8a20a04cbb29b0c1831abab5f2094697ca023dfdd919fba336e60",
+      "verses": 96
+    },
+    "tafsir/56.json": {
+      "size": 100562,
+      "sha256": "d76dae7108ae2beadff5c7ac3abb1426440f23ae965519f7b19f93b5abd823be",
+      "tafsirs": 96
+    },
+    "surat/57.json": {
+      "size": 39674,
+      "sha256": "b956982f447746c31d8e0aac74a8e9b038a2ee921f771e6d5c3f486e4d9cdf5e",
+      "verses": 29
+    },
+    "tafsir/57.json": {
+      "size": 46527,
+      "sha256": "bdd1cb2eb38b39e9307c0b435983bf083e2a57ca68b7e227c1633e65cab77fc0",
+      "tafsirs": 29
+    },
+    "surat/58.json": {
+      "size": 31842,
+      "sha256": "8ba237fec861a04118e7482d612b89f4b2f7e6cb560d49f6e3ea6a96ed5c3965",
+      "verses": 22
+    },
+    "tafsir/58.json": {
+      "size": 57178,
+      "sha256": "4746c7c2b115bf464cee40afcee2db1d25df66ec5e5a521939874c3a251aae15",
+      "tafsirs": 22
+    },
+    "surat/59.json": {
+      "size": 32016,
+      "sha256": "e0b3a3dc8c25d663a9053b3f4dfcb174a164bd2ae145bc907b2d9da4199e7573",
+      "verses": 24
+    },
+    "tafsir/59.json": {
+      "size": 56756,
+      "sha256": "3c757adfc8f1826cc9229ebf8dfaea63447e9cb4deba48912cd8c907fcc19472",
+      "tafsirs": 24
+    },
+    "surat/60.json": {
+      "size": 22590,
+      "sha256": "bc2c6e56b065d5abd34c2f7cf02ea9f7986c3893281be9816999f4c634d4a995",
+      "verses": 13
+    },
+    "tafsir/60.json": {
+      "size": 24681,
+      "sha256": "3d581dbdfe378827b4805ee8956be0702b0c31b30424e0360abe58af6b98140b",
+      "tafsirs": 13
+    },
+    "surat/61.json": {
+      "size": 17514,
+      "sha256": "258dc962c5d6af8df5aa8dccc735d4444e306a673b5d267770cf2d6655fdeb88",
+      "verses": 14
+    },
+    "tafsir/61.json": {
+      "size": 24202,
+      "sha256": "bf3c44ab9e3e60b1e2da9ffa399dd5cda17b42efaf0471fb326a0e4da8614181",
+      "tafsirs": 14
+    },
+    "surat/62.json": {
+      "size": 13753,
+      "sha256": "b5878926bac482f7988e64dbcf2e4d7275fa0dcd8b36b9e66c9d8275688dd7bb",
+      "verses": 11
+    },
+    "tafsir/62.json": {
+      "size": 13421,
+      "sha256": "b234db050a86a307b12cac3c57e43306565962984ada5d536a961ea2cc19bfb9",
+      "tafsirs": 11
+    },
+    "surat/63.json": {
+      "size": 14448,
+      "sha256": "13bfbacba102e6faa23987fdfb00b99216d97e7ff32c70c9e4a1a0629f4374b9",
+      "verses": 11
+    },
+    "tafsir/63.json": {
+      "size": 15124,
+      "sha256": "c620276c4d7a318ac37ebe3c3d1c758bffa2c684779ce9b6568896f6eb966fdb",
+      "tafsirs": 11
+    },
+    "surat/64.json": {
+      "size": 20615,
+      "sha256": "20c57c9b1dabeefcbeae4c5ef91cb6cbfe42aaf7d9135cc8bfca5570ad766cb3",
+      "verses": 18
+    },
+    "tafsir/64.json": {
+      "size": 20058,
+      "sha256": "bcf46317414f4aaebf22989d114119217b2349aa0237637e2ed448cca660a8f0",
+      "tafsirs": 18
+    },
+    "surat/65.json": {
+      "size": 19087,
+      "sha256": "defe472107833877140e687b1e53418de4bfffe62adff1180f58987f0e5014fc",
+      "verses": 12
+    },
+    "tafsir/65.json": {
+      "size": 19147,
+      "sha256": "c95f65c5cd02ae4f368bcb9e416a49dcac7226ee8817aae9fbc29aae7eee2313",
+      "tafsirs": 12
+    },
+    "surat/66.json": {
+      "size": 17792,
+      "sha256": "58fb31a6839da4b5c37f129d3a4a280315227a41dbba8e0a4f4fb4149e78ddf9",
+      "verses": 12
+    },
+    "tafsir/66.json": {
+      "size": 15592,
+      "sha256": "2e4307d43e3fa41622a7ea5fc390abe99fc7c0b970df7d67a05409b6d38528ea",
+      "tafsirs": 12
+    },
+    "surat/67.json": {
+      "size": 30248,
+      "sha256": "a9f9b09bdf0b69e94e9d9c55a86403c89f2263c0f836108873561ae3c977f182",
+      "verses": 30
+    },
+    "tafsir/67.json": {
+      "size": 72603,
+      "sha256": "28956f181f210ae93b5a2a54b3487525d4abd78e22b632b35d4be3ccd78ae3a6",
+      "tafsirs": 30
+    },
+    "surat/68.json": {
+      "size": 41339,
+      "sha256": "5307fb8646c0800f058f35762bc84011586297e02e6fea53c6f523117413902a",
+      "verses": 52
+    },
+    "tafsir/68.json": {
+      "size": 75980,
+      "sha256": "7a1976f157f5b0c286f5d5ac232f2bd1217dd5261aa38e4010b48813936cb4be",
+      "tafsirs": 52
+    },
+    "surat/69.json": {
+      "size": 39451,
+      "sha256": "55eed77f8e84bbc8e07d5d9cd44887ac732f6dce2b270bb8a28fc9a98393c14a",
+      "verses": 52
+    },
+    "tafsir/69.json": {
+      "size": 68575,
+      "sha256": "7bca5be596541a25d380736aed521f7c6d2da1aa6b299c891f13de0552321542",
+      "tafsirs": 52
+    },
+    "surat/70.json": {
+      "size": 33694,
+      "sha256": "4f4aa2e6eb0b686e777a397485491cfea365b61dd26e553081255e90ea0aa0a5",
+      "verses": 44
+    },
+    "tafsir/70.json": {
+      "size": 53512,
+      "sha256": "7e1127834db2c830edc75ccc64f13d3264990bced75ea416b6b0d809fbb5e6a3",
+      "tafsirs": 44
+    },
+    "surat/71.json": {
+      "size": 24715,
+      "sha256": "c4885be75e1585420bcdce656352e4c5d4c347348ed630fd33ada6a1d4a976a9",
+      "verses": 28
+    },
+    "tafsir/71.json": {
+      "size": 35696,
+      "sha256": "2587485ea38602323b6940f5c74e4a04db4487e9dd679a49b37f3f5fd52249da",
+      "tafsirs": 28
+    },
+    "surat/72.json": {
+      "size": 27134,
+      "sha256": "17e174ed4e3a3e5924016383336a975936cdd18e1cfc91072ff99cb9fd56399b",
+      "verses": 28
+    },
+    "tafsir/72.json": {
+      "size": 22958,
+      "sha256": "cdf09031be05cfaa098f632282b791973b3fd639f71830206353ae6fdc72f9bb",
+      "tafsirs": 28
+    },
+    "surat/73.json": {
+      "size": 19714,
+      "sha256": "91a8de370905c73f4b5112b8c00aef3383e4f64a6d1c1e98c22da46cdbd2d05e",
+      "verses": 20
+    },
+    "tafsir/73.json": {
+      "size": 17458,
+      "sha256": "1d1a723122b425f3ad6f943ebc37553c1473ff7fe49962595f1cbc425ecdb292",
+      "tafsirs": 20
+    },
+    "surat/74.json": {
+      "size": 41061,
+      "sha256": "d7da9078c4e97daa400c6f3befbfe8b70633ab71c9128b958952e6d8e64b4fca",
+      "verses": 56
+    },
+    "tafsir/74.json": {
+      "size": 54221,
+      "sha256": "ea0d9018d1c8ae75260e60c991ab9bfa9428d63c023ccf9eecdc644f39c218ff",
+      "tafsirs": 56
+    },
+    "surat/75.json": {
+      "size": 28703,
+      "sha256": "6d0e7433328944f87998a3e4305fa0cb76230b715f0293c525723f369e661767",
+      "verses": 40
+    },
+    "tafsir/75.json": {
+      "size": 52609,
+      "sha256": "b77347f5640f0c3ce43d4d5ed82fced624dcb831db51146b29fc3747828d9c98",
+      "tafsirs": 40
+    },
+    "surat/76.json": {
+      "size": 27454,
+      "sha256": "f1fc938534bcd650d79514edc08c7a1dc4da45536aaf01ed7893387f520f16cc",
+      "verses": 31
+    },
+    "tafsir/76.json": {
+      "size": 39408,
+      "sha256": "0031586a7185e528bf065c55ce6785d9651cd5a1ff7253c24f0db426e70335f9",
+      "tafsirs": 31
+    },
+    "surat/77.json": {
+      "size": 35814,
+      "sha256": "fc482e73f0e06fcf9338a6ff33cefb2d0fbd46aa44b7afa8eb896fb81c659d90",
+      "verses": 50
+    },
+    "tafsir/77.json": {
+      "size": 35054,
+      "sha256": "3a1484d0d93d1301039979860c45868e642ebea5304ed6bff2278dcc4ee932c6",
+      "tafsirs": 50
+    },
+    "surat/78.json": {
+      "size": 29591,
+      "sha256": "e0f240bbcad465f80399bccbfc43f2835a3dd054f8e80e11b84889e5eaeeb859",
+      "verses": 40
+    },
+    "tafsir/78.json": {
+      "size": 44113,
+      "sha256": "3a1c2b3ffed0f5e9e516de776a82ccff86c34e5599c5d829d3ce4f63527b6960",
+      "tafsirs": 40
+    },
+    "surat/79.json": {
+      "size": 33183,
+      "sha256": "fa97b0369452b7a87d185a8d00dcddca88b71943234c2f41eb7fa457d48abf6d",
+      "verses": 46
+    },
+    "tafsir/79.json": {
+      "size": 36684,
+      "sha256": "9f368ca37bd801b4e00f8b4c305e94688125860739c73d61699aea53bf50a612",
+      "tafsirs": 46
+    },
+    "surat/80.json": {
+      "size": 29360,
+      "sha256": "717004523803e5650f4a65ebc83d5ee1d191c00c7b721acf01f65ea96fd03226",
+      "verses": 42
+    },
+    "tafsir/80.json": {
+      "size": 48901,
+      "sha256": "4e65a479ecbe9d472994442becb382b96eba5f1582b0c088db16cf2b100d230d",
+      "tafsirs": 42
+    },
+    "surat/81.json": {
+      "size": 20463,
+      "sha256": "800c85f916023145dfd5361ab93c8f9b714903a761ff4f5ea0ed83988f7d1802",
+      "verses": 29
+    },
+    "tafsir/81.json": {
+      "size": 21269,
+      "sha256": "d9b527c7979c692766be3622012ad1d7606f18cdb92261187bc8b0af8d043ed5",
+      "tafsirs": 29
+    },
+    "surat/82.json": {
+      "size": 14264,
+      "sha256": "a071bc986a9dfe6bdaf8bbfb6d2408a7043030564dac088dece2be9c85636e07",
+      "verses": 19
+    },
+    "tafsir/82.json": {
+      "size": 27460,
+      "sha256": "f06b3172f897b8ac267fa95604fcb66bb56bc5412ff5c9e4c05a3c8742f45ef8",
+      "tafsirs": 19
+    },
+    "surat/83.json": {
+      "size": 27465,
+      "sha256": "76fd5014ea38f72b9da71852bd512be4be3ca10f2cc84c2c675192420d2562a6",
+      "verses": 36
+    },
+    "tafsir/83.json": {
+      "size": 20470,
+      "sha256": "4c364c97280c77442019bc103f7018bf41095b2fceac0a15b82e54f56ce36970",
+      "tafsirs": 36
+    },
+    "surat/84.json": {
+      "size": 18529,
+      "sha256": "973ecf18190e31f8d671ec989091ff5d6715f11d3ff181910e44252c426b91f4",
+      "verses": 25
+    },
+    "tafsir/84.json": {
+      "size": 20363,
+      "sha256": "cfc1b76d7544a69b9a824ef0c953d15a47e85a9c3b1f6fe30d85bba240c37b1f",
+      "tafsirs": 25
+    },
+    "surat/85.json": {
+      "size": 16982,
+      "sha256": "e5909d280a6848137635f9c0ac4af21edec5e117b2801aef89d90d6e647f935e",
+      "verses": 22
+    },
+    "tafsir/85.json": {
+      "size": 15389,
+      "sha256": "6038a06ff7f98cd39b4f47bf7da2a3e79a5a9ec55746525fe626150d415b3b65",
+      "tafsirs": 22
+    },
+    "surat/86.json": {
+      "size": 12530,
+      "sha256": "dc581d107da783086b8471fd3d24dbcaff8c32153356b06bf1bc80aef048016a",
+      "verses": 17
+    },
+    "tafsir/86.json": {
+      "size": 13222,
+      "sha256": "21bd74dc1ed19ddab2f3e8c867b1291ba11ada5802865b8eafd2ff4f10db5666",
+      "tafsirs": 17
+    },
+    "surat/87.json": {
+      "size": 14276,
+      "sha256": "adfe10157901ed377defc42941564ec8b651585860e1e94ddd18a90d9d602b65",
+      "verses": 19
+    },
+    "tafsir/87.json": {
+      "size": 15320,
+      "sha256": "b290d141e8412ed5fbc629f65c2a4abd8c1ed54a8673f172097185636d561b75",
+      "tafsirs": 19
+    },
+    "surat/88.json": {
+      "size": 18684,
+      "sha256": "b75d9516ee1c133218117e30765c0a45c03d4eef8eff96cf5e20421e51e434b6",
+      "verses": 26
+    },
+    "tafsir/88.json": {
+      "size": 22805,
+      "sha256": "35dc23acf3b6f9d4c3936dadbee132725b7d9b88664363120a2f3673042e6154",
+      "tafsirs": 26
+    },
+    "surat/89.json": {
+      "size": 22433,
+      "sha256": "d8b6ad468773414455bbcf8655db897c77e68154086e47a934005ca281f972c1",
+      "verses": 30
+    },
+    "tafsir/89.json": {
+      "size": 18360,
+      "sha256": "5256c95f5cc7bffd4078b1656a6a6080a0cf399ce8e76653243222bc57e1dd80",
+      "tafsirs": 30
+    },
+    "surat/90.json": {
+      "size": 14864,
+      "sha256": "7089b59228fae38bc9a51713eb6957cf6eeeb8d2ff017fc21fd84fab676e3678",
+      "verses": 20
+    },
+    "tafsir/90.json": {
+      "size": 13442,
+      "sha256": "e80890cb6e70a4c19c2ccc7b565b53b6cc511e064ef4325d5693b40f39b881fa",
+      "tafsirs": 20
+    },
+    "surat/91.json": {
+      "size": 11308,
+      "sha256": "72ecec51dff9df3acdfd3312dbf0e89ee73854153fea228788805df6cf2b410d",
+      "verses": 15
+    },
+    "tafsir/91.json": {
+      "size": 8023,
+      "sha256": "5447e2b8598015a7364a6eecabdad2bfe7e4fe36278b0805edb2de84851f9e7b",
+      "tafsirs": 15
+    },
+    "surat/92.json": {
+      "size": 15179,
+      "sha256": "68ca80a09fd9858aced59789c9c37be733b6d405464ec244dea9f401f793b20c",
+      "verses": 21
+    },
+    "tafsir/92.json": {
+      "size": 12347,
+      "sha256": "3ee93ebbb21d7ad496eca231500e2bc3b7ac8a675e98e401144f3f4a03567775",
+      "tafsirs": 21
+    },
+    "surat/93.json": {
+      "size": 8519,
+      "sha256": "89769c6f56f13276a1e174bee2f10734115c5738a36e7f6d494719b8a7efe5fe",
+      "verses": 11
+    },
+    "tafsir/93.json": {
+      "size": 10899,
+      "sha256": "c7b8a320a86ed7c57ba69935b06a6c207d81bdab2dbb432e9bd6d6b0b858e1e2",
+      "tafsirs": 11
+    },
+    "surat/94.json": {
+      "size": 6330,
+      "sha256": "aba3ff104922ba7a5cac6b301636351e12f76107f6ce3aeb9c4eb79b8fe0d0fc",
+      "verses": 8
+    },
+    "tafsir/94.json": {
+      "size": 9237,
+      "sha256": "cc567f13434525506f9bc2cb039373251e19f9aa1b20e23e0b3d8d1a26b37f0d",
+      "tafsirs": 8
+    },
+    "surat/95.json": {
+      "size": 6658,
+      "sha256": "7ced94e8d3c4d535b3565d84415392574e7eb8f2910262f574dd0da634f85be3",
+      "verses": 8
+    },
+    "tafsir/95.json": {
+      "size": 11807,
+      "sha256": "75693374105b34626f45be175c7de9e9e5f8328b215c974f3aee5153d95e42af",
+      "tafsirs": 8
+    },
+    "surat/96.json": {
+      "size": 14112,
+      "sha256": "22872a9ccf5a0e9c22ba5cc541135e41495875afd1cb429090b7723d191a72d4",
+      "verses": 19
+    },
+    "tafsir/96.json": {
+      "size": 13431,
+      "sha256": "97534e8893ea8469d782445b769e980490a3ec237eeb7e40a77ffb80314f9f83",
+      "tafsirs": 19
+    },
+    "surat/97.json": {
+      "size": 4682,
+      "sha256": "c5f848a235f8844da0a9461c3962865361fa3ead7246dbb9d8fdb7f0a19b83e5",
+      "verses": 5
+    },
+    "tafsir/97.json": {
+      "size": 8640,
+      "sha256": "1ce26e5d868e32a0e6a6340ebb49fe4cca5063b60ba8df08168bfff4591f54c1",
+      "tafsirs": 5
+    },
+    "surat/98.json": {
+      "size": 8883,
+      "sha256": "910ab315590ba995b8d369ed1da69f3c7184bd1ec6dfecb8bd2e770c8772bd66",
+      "verses": 8
+    },
+    "tafsir/98.json": {
+      "size": 9827,
+      "sha256": "887a36ae9e0284a708430969aca7253a383e10f16304b09c14b8a8dde32955f3",
+      "tafsirs": 8
+    },
+    "surat/99.json": {
+      "size": 6830,
+      "sha256": "01e4f21a22e0eddb40bbd3c26ff6c89984862b2e243f2a502d18d93d3de7f7db",
+      "verses": 8
+    },
+    "tafsir/99.json": {
+      "size": 7964,
+      "sha256": "df594ce583694e525317439672b012eb597ebf9e77507cf9dfa8dbc504d85a4a",
+      "tafsirs": 8
+    },
+    "surat/100.json": {
+      "size": 8584,
+      "sha256": "e168bfb52b914e655b80d3f8516d8669f2939cfec4fff438d0d32853cd957f92",
+      "verses": 11
+    },
+    "tafsir/100.json": {
+      "size": 13124,
+      "sha256": "290fb3f4d26f0d0ba560ab420e70dd474948e1b7fe7ceec4d84a6d6bd089de51",
+      "tafsirs": 11
+    },
+    "surat/101.json": {
+      "size": 8308,
+      "sha256": "8652c0b2014b11651b080bf6d38b9e37f4a4610acfdd1bdf15ea2ed46f544f2e",
+      "verses": 11
+    },
+    "tafsir/101.json": {
+      "size": 6763,
+      "sha256": "4d1dcbf7665ed11384b04e047492a54c73d87f7934773fa03ba6bf45b9c35324",
+      "tafsirs": 11
+    },
+    "surat/102.json": {
+      "size": 6638,
+      "sha256": "0af84a12dc2fc87eb4647732c516cfa7152bb99adbe793bac50ca39c5b8bd41c",
+      "verses": 8
+    },
+    "tafsir/102.json": {
+      "size": 7527,
+      "sha256": "34d5eb8c1efb1c82fa0e183e719dd068d6adf8869e8af7297766d5be82288691",
+      "tafsirs": 8
+    },
+    "surat/103.json": {
+      "size": 3211,
+      "sha256": "f61732667e092821e656d2b444b32ccfce246ddb960688b98260b64941332154",
+      "verses": 3
+    },
+    "tafsir/103.json": {
+      "size": 3386,
+      "sha256": "8db020f727feea291f900beca1d584173d83591d73aa0f974d9687e7006036ad",
+      "tafsirs": 3
+    },
+    "surat/104.json": {
+      "size": 7105,
+      "sha256": "72448b71175f4fb6e76ea245fa1531a6d2eabb1178be0c4b5a05418b6def9d41",
+      "verses": 9
+    },
+    "tafsir/104.json": {
+      "size": 5897,
+      "sha256": "f06955290a75b924ea84cb35aaacc47dc6dfe7be0bb35821ef16d3fd906c945d",
+      "tafsirs": 9
+    },
+    "surat/105.json": {
+      "size": 4819,
+      "sha256": "3a3ab1dafd2d88da069c877ef33b2abe1e8e1d05a1bf9fab17438a02029fd7b8",
+      "verses": 5
+    },
+    "tafsir/105.json": {
+      "size": 4841,
+      "sha256": "12a131fdd2d7d235b8ce55075a9e33f2370125180b34eb8c1d92597243a5d05b",
+      "tafsirs": 5
+    },
+    "surat/106.json": {
+      "size": 3995,
+      "sha256": "615b002f5a7ec466efd9c181810e7b92d6a9bccbd47e9c7b361349d72b30121f",
+      "verses": 4
+    },
+    "tafsir/106.json": {
+      "size": 11201,
+      "sha256": "fffe4decc7eff6a37329036fdb817c5c2b55251743a40e9422215824c4583c6b",
+      "tafsirs": 4
+    },
+    "surat/107.json": {
+      "size": 5712,
+      "sha256": "8b9938bac618dd747749154247386c36b038220607cd63b2f20848b01626c1e3",
+      "verses": 7
+    },
+    "tafsir/107.json": {
+      "size": 4885,
+      "sha256": "a352b38f5761ad732467b59fe9c93762a0c544b65f0428e02d1a0825c195201b",
+      "tafsirs": 7
+    },
+    "surat/108.json": {
+      "size": 3178,
+      "sha256": "9394e0afc34117f66e8a5fb4a3b8c2be57bb2b914a378b0361bb2d189e0c3ef6",
+      "verses": 3
+    },
+    "tafsir/108.json": {
+      "size": 5936,
+      "sha256": "2a0dab77237f6f1bf3caba1ca6a8b04f00e47d0f8adf4b2ad1f4b984ac2a52f7",
+      "tafsirs": 3
+    },
+    "surat/109.json": {
+      "size": 5133,
+      "sha256": "abc836fd23cb6789794c2ede620a1441f447165843d48c244fae7721f02227ed",
+      "verses": 6
+    },
+    "tafsir/109.json": {
+      "size": 5628,
+      "sha256": "5675503736cfdcc98a7b3395eaa7d84eedcae9dc829dbf74dd412cc85a852788",
+      "tafsirs": 6
+    },
+    "surat/110.json": {
+      "size": 3341,
+      "sha256": "ab5b28cd2bc33909420a958c9621cc9131777296a9ca6195822b6d5324f9b22c",
+      "verses": 3
+    },
+    "tafsir/110.json": {
+      "size": 6215,
+      "sha256": "701e587bdcbb8cd8d7d69d0d86fec7151452f7426818d93415a936f2e3bdc522",
+      "tafsirs": 3
+    },
+    "surat/111.json": {
+      "size": 4521,
+      "sha256": "e61a0804e8cdb4c622e0cd04b51a88e0e5063dabcc829f54416f993d0bc2fcb9",
+      "verses": 5
+    },
+    "tafsir/111.json": {
+      "size": 6803,
+      "sha256": "ce1e2bea4dae844ddf6d8b4497edbae8a4fa175d8f18279ca93aa7948584500e",
+      "tafsirs": 5
+    },
+    "surat/112.json": {
+      "size": 3607,
+      "sha256": "6193302165e808b1760bd38e338590c39963a4986a17ad38ddbbad37e21666f3",
+      "verses": 4
+    },
+    "tafsir/112.json": {
+      "size": 3651,
+      "sha256": "4c8633cda67de724a9ec1f5d1ed24c7e3a7da96ca458d7cf26ff72fd46f2e2ee",
+      "tafsirs": 4
+    },
+    "surat/113.json": {
+      "size": 4627,
+      "sha256": "3635a884f115c03758ff12acb368caf264eb050fa2609fa215b905aa67fdd900",
+      "verses": 5
+    },
+    "tafsir/113.json": {
+      "size": 5547,
+      "sha256": "42358c26afba686ba76349cee88327c20dd1db59ed2f8fba4bf3122fca66060c",
+      "tafsirs": 5
+    },
+    "surat/114.json": {
+      "size": 4781,
+      "sha256": "cf97bc483f99667a554a1bcecd5769013ba835a31a78afc3f6db7be0c404347f",
+      "verses": 6
+    },
+    "tafsir/114.json": {
+      "size": 7199,
+      "sha256": "133d359234c963a04af3c99339330658585354b00dd196e3e54507afe6aacd8c",
+      "tafsirs": 6
+    }
+  }
+}
